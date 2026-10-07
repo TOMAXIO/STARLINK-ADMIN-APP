@@ -8,6 +8,7 @@
     <title>Admin Starlink</title>
     <meta name="apple-mobile-web-app-title" content="Starlink">
 <link rel="apple-touch-icon" href="icono.png">
+    <link rel="manifest" href="manifest.json">
     <style>
         :root {
             --bg-color: #000000;
@@ -776,6 +777,14 @@ Por favor, recuerda enviarme la referencia de pago.`;
                 `;
             });
         }
+        // REGISTRO DEL SERVICE WORKER (OFFLINE MODE)
+     if ('serviceWorker' in navigator) {
+         window.addEventListener('load', () => {
+             navigator.serviceWorker.register('service-worker.js')
+             .then(reg => console.log('Modo Offline Activado exitosamente.'))
+             .catch(err => console.log('Error al activar modo offline.', err));
+         });
+     }
     </script>
 </body>
 </html>
